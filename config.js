@@ -7,7 +7,7 @@ export default {
   },
   server: {
     port: 2333,
-    password: 'youshallnotpass'
+    password: process.env.PASSWORD ? process.env.PASSWORD : 'psht'
   },
   options: {
     requestsTimeout: 5000, /* 5 seconds */
@@ -57,7 +57,7 @@ export default {
     },
     request: {
       auth: true,
-      all: false, // Only enable for debugging purposes.
+      all: true, // Only enable for debugging purposes.
       enabled: true,
       error: true,
       showBody: true,
@@ -100,10 +100,10 @@ export default {
         authentication: {
           enabled: false, // Authentication using accounts outside EU helps bypass 403 errors. Enable at your own risk.
           cookies: { // Available in YouTube website cookies.
-            SID: 'DISABLED',
+            SID: process.env.YT_SID ? process.env.YT_SID : 'DISABLED',
             LOGIN_INFO: 'DISABLED'
           },
-          authorization: 'DISABLED' // Available in YouTube website in Authorization header.
+          authorization: process.env.YT_AUTH ? process.env.YT_AUTH : 'DISABLED' // Available in YouTube website in Authorization header.
         },
         bypassAgeRestriction: false // Bypasses age-restricted videos. Enable at your own risk.
       },
@@ -113,13 +113,13 @@ export default {
       pandora: false,
       spotify: {
         enabled: true,
-        market: 'BR',
-        sp_dc: 'DISABLED' // Necessary for direct Spotify loadLyrics. Available in Spotify website cookies in sp_dc parameter.
+        market: 'ID',
+        sp_dc: process.env.SP_DC ? process.env.SP_DC : 'DISABLED' // Necessary for direct Spotify loadLyrics. Available in Spotify website cookies in sp_dc parameter.
       },
       deezer: {
-        enabled: false,
-        decryptionKey: 'DISABLED', // For legal reasons, this key is not provided.
-        arl: 'DISABLED' // Necessary for direct Deezer Lyrics. Available in Deezer website cookies in arl parameter.
+        enabled: true,
+        decryptionKey: process.env.DEEZER_TOKEN ? process.env.DEEZER_TOKEN : '', // For legal reasons, this key is not provided.
+        arl: process.env.DEEZER_ARL ? process.env.DEEZER_ARL : 'DISABLED' // Necessary for direct Deezer Lyrics. Available in Deezer website cookies in arl parameter.
       },
       soundcloud: {
         enabled: true,
@@ -138,7 +138,7 @@ export default {
       },
       musixmatch: {
         enabled: false,
-        signatureSecret: 'DISABLED' // For legal reasons, this key is not provided.
+        signatureSecret: process.env.MUSIXMATCH ? process.env.MUSIXMATCH : 'DISABLED' // For legal reasons, this key is not provided.
       },
       genius: {
         enabled: true
