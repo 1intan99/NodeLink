@@ -11,6 +11,7 @@
     "node-libsamplerate": "github:ThePedroo/node-libsamplerate",
     "opusscript": "^0.0.8",
     "prism-media": "^1.3.5",
-    "sodium-native": "^4.1.1"
+    "sodium-native": "^4.1.1",
+    "dotenv": "^16.4.5"
   }
 }
