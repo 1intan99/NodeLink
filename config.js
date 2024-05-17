@@ -6,7 +6,7 @@ export default {
     preRelease: ''
   },
   server: {
-    port: 2333,
+    port: process.env.PORT ? parseInt(process.env.PORT) : 2333,
     password: process.env.PASSWORD ? process.env.PASSWORD : 'psht'
   },
   options: {
